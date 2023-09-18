@@ -1,0 +1,37 @@
+#header {
+  position: fixed; /* Сделайте хедер фиксированным */
+  top: 0; /* Расположите его в верхней части страницы */
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background: #fff;
+  -webkit-box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+  -moz-box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+  box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    a {
+      color: #000;
+      font-family: Playfair Display;
+      font-size: 19px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      transition: 0.5s;
+      &:hover {
+        color: #3d8d3d;
+        transform: scale(1.05);
+      }
+      &:active {
+        color: #3d8d3d;
+      }
+    }
+    button {
+      background: transparent;
+      font-size: 30px;
+      border: none;
+    }
+  }
+}
