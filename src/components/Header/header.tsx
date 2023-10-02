@@ -30,14 +30,17 @@ const Header = () => {
                             <img src={agro} alt="" style={{ width: "45%" }} data-aos="fade-down"/>
                             <img src={info} alt="" style={{ width: "75%" }} data-aos="fade-down"/>
                         </div>
-                        <NavLink data-aos="fade-down" to={"/"}>Главная</NavLink>
-                        <NavLink data-aos="fade-down" to={"/"}>О нас</NavLink>
-                        <NavLink data-aos="fade-down" to={"/"}>Курсы</NavLink>
-                        <NavLink data-aos="fade-down" to={"/"}>Покупка/Продажа</NavLink>
-                        <button data-aos="fade-down">
-                            <FaUser />
+                        <NavLink to={"/"}>Главная</NavLink>
+                        <NavLink to={"/о нас"}>О нас</NavLink>
+                        <NavLink to={"/категории"}>Категории</NavLink>
+                        <NavLink to={"/покупка/продажа"}>Покупка/Продажа</NavLink>
+                        <button className="header--btn" data-aos="fade-down">
+                           Войти
                         </button>
-                        <button data-aos="fade-down">
+                        <button className="header--btns" data-aos="fade-down">
+                            Регистрация
+                        </button>
+                        <button className="header--button" data-aos="fade-down">
                             <AiOutlineGlobal />
                         </button>
                     </div>

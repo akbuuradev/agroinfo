@@ -1,0 +1,39 @@
+#unique {
+  h1 {
+    padding-top: 70px;
+    color: #000;
+    font-family: Playfair Display;
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+  }
+  .unique {
+    position: relative;
+    padding-top: 98px;
+    display: flex;
+    align-items: center;
+    &--block {
+      position: absolute;
+      margin-left: 530px ;
+      width: 569px;
+      height: 317px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: #56B156;
+      p {
+        width: 524px;
+        height: 271.269px;
+        flex-shrink: 0;
+        color: #FFF;
+        font-family: Inter;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        padding: 22px 0 0 28px;
+      }
+    }
+  }
+}
