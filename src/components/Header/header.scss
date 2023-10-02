@@ -14,7 +14,7 @@
     justify-content: space-between;
     a {
       color: #000;
-      font-family: Playfair Display;
+      font-family: "Playfair Display";
       font-size: 19px;
       font-style: normal;
       font-weight: 500;
@@ -28,10 +28,31 @@
         color: #3d8d3d;
       }
     }
-    button {
+    &--btn {
+      font-family: "Playfair Display";
       background: transparent;
-      font-size: 30px;
+      font-size: 19px;
       border: none;
+      margin-right: -62px;
+      cursor: pointer;
+    }
+    &--btns {
+      font-family: "Playfair Display";
+      font-size: 19px;
+      border: none;
+      background: #3D8D3D;
+      padding: 10px 30px;
+      border-radius: 5px;
+      color: white;
+      margin-right: -50px;
+      cursor: pointer;
+    }
+    &--button {
+      font-family: "Playfair Display";
+      background: transparent;
+      font-size: 25px;
+      border: none;
+      cursor: pointer;
     }
   }
 }

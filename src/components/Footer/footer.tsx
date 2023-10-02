@@ -4,6 +4,7 @@ import { RiTwitterLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import "./footer.scss"
 
+
 const Footer = () => {
     return (
         <div id="footer">
