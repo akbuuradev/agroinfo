@@ -1,0 +1,60 @@
+#wrap {
+  background: url("../../../images/produceBG.png");
+  height: 1233px;
+  margin: 50px 0;
+  #services {
+    background: #fff;
+    height: 701px;
+    transform: translate(0, 280px);
+  }
+  .services {
+    &__title {
+      text-align: center;
+      color: var(--ForestGreen, #228b22);
+      font-family: Montserrat;
+      font-size: 52px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    &__box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 69px;
+      
+      #block2{
+        transform: translate(0,200px);
+      }
+      &__block {
+        display: block;
+        align-items: center;
+        justify-content: center;
+        .img3{
+            display: block;
+            margin: 0 auto;
+        }
+        h1 {
+          color: rgba(34, 139, 34, 0.42);
+          font-family: Poppins;
+          font-size: 96px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          margin-bottom: 20px;
+        }
+        li {
+          color: #006400;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          margin: 15px 0;
+          width: 390px;
+          text-align: start;
+
+        }
+      }
+    }
+  }
+}
