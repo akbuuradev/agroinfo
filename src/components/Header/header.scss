@@ -8,10 +8,12 @@
   -webkit-box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
   -moz-box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
   box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+
   .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     a {
       color: #000;
       font-family: "Playfair Display";
@@ -20,14 +22,17 @@
       font-weight: 500;
       line-height: normal;
       transition: 0.5s;
+
       &:hover {
         color: #3d8d3d;
         transform: scale(1.05);
       }
+
       &:active {
         color: #3d8d3d;
       }
     }
+
     &--btn {
       font-family: "Playfair Display";
       background: transparent;
@@ -36,6 +41,7 @@
       margin-right: -62px;
       cursor: pointer;
     }
+
     &--btns {
       font-family: "Playfair Display";
       font-size: 19px;
@@ -47,6 +53,7 @@
       margin-right: -50px;
       cursor: pointer;
     }
+
     &--button {
       font-family: "Playfair Display";
       background: transparent;
@@ -54,5 +61,324 @@
       border: none;
       cursor: pointer;
     }
+
+    .open {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 140;
+      min-width: 100vw;
+      min-height: 100vh;
+      background: #363535;
+      background: rgba(51, 50, 50, 0.8);
+
+      &--detail {
+        width: 1055px;
+        height: 650px;
+        border-radius: 17.267px;
+        background: #FFF;
+        display: flex;
+        justify-content: space-between;
+
+        &__flower {
+          position: absolute;
+          width: 80px;
+          height: 120px;
+        }
+
+        .flowers {
+          position: absolute;
+          bottom: 45px;
+          left: 240px;
+        }
+
+        &__right {
+          margin: 50px;
+
+          &--text {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 20px;
+
+            h2 {
+              cursor: pointer;
+              color: #000;
+              text-align: center;
+              font-family: Inter;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
+
+            .btn {
+              display: flex;
+              width: 152px;
+              padding: 10px;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+              border-radius: 20px;
+              background: #96F23B;
+              color: #000;
+              text-align: center;
+              font-family: Inter;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              border: none;
+            }
+          }
+
+          h4 {
+            color: #454545;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin: 20px 0;
+          }
+
+          input {
+            display: flex;
+            width: 308px;
+            padding: 16px 22px;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 20px;
+            background: #DCFDED;
+            color: #7A7A7A;
+            border: none;
+            font-family: Inter;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+
+          h3 {
+            margin: 20px 0 50px 0;
+            text-align: right;
+            color: #0C89FD;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration-line: underline;
+          }
+
+          button {
+            color: var(--White, #FFF);
+            font-family: Inter;
+            font-size: 22.87px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            display: flex;
+            width: 150px;
+            height: 50px;
+            padding: 14px 22px;
+            justify-content: center;
+            align-items: center;
+            gap: 8.28px;
+            flex-shrink: 0;
+            border-radius: 8.28px;
+            background: #96F23B;
+            border: none;
+          }
+
+          h5 {
+            margin: 50px 0;
+            color: #3F3E3E;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration-line: underline;
+
+            span {
+              color: #0C89FD;
+              font-family: Inter;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              text-decoration-line: underline;
+            }
+          }
+        }
+
+        &__left {
+          .images {
+            border-radius: 0 17px 17px 0;
+            height: 650px;
+            width: 500px;
+          }
+          h6 {
+            position: absolute;
+            right: 260px;
+            cursor: pointer;
+            top: 50px;
+            font-size: 20px;
+            color: white;
+          }
+        }
+      }
+    }
+
+    .opens {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 140;
+      min-width: 100vw;
+      min-height: 100vh;
+      background: #363535;
+      background: rgba(51, 50, 50, 0.8);
+
+      &--group {
+        width: 1055px;
+        height: 730px;
+        border-radius: 17.267px;
+        background: #FFF;
+        display: flex;
+        justify-content: space-between;
+
+        &__images {
+          position: absolute;
+          width: 100px;
+          height: 100px;
+        }
+
+        &__right {
+          margin: 40px 55px;
+
+          &--btns {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 50px;
+
+            .btn {
+              display: flex;
+              width: 248px;
+              padding: 10px 28px;
+              align-items: center;
+              gap: 10px;
+              border-radius: 20px;
+              background: #96F23B;
+              border: none;
+              color: #000;
+              text-align: center;
+              font-family: Inter;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              border: none;
+            }
+
+            h2 {
+              cursor: pointer;
+              color: #000;
+              text-align: center;
+              font-family: Inter;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
+          }
+
+          h3 {
+            color: #454545;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin: 20px 0;
+          }
+
+          input {
+            display: flex;
+            width: 308px;
+            padding: 16px 22px;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 20px;
+            background: #DCFDED;
+            border: none;
+          }
+
+          &--icon {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+
+            .facebook {
+              margin: 0 60px 0 20px;
+            }
+
+          }
+
+          button {
+            display: flex;
+            width: 312px;
+            height: 50px;
+            padding: 14px 22px;
+            justify-content: center;
+            align-items: center;
+            gap: 8.28px;
+            flex-shrink: 0;
+            border-radius: 8.28px;
+            background: #96F23B;
+            color: var(--White, #FFF);
+            font-family: Inter;
+            font-size: 22.87px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            border: none;
+          }
+
+          .frame2 {
+            margin-left: -50px;
+          }
+        }
+
+        &__left {
+          .frame {
+            border-radius: 0 17px 17px 0;
+            height: 730px;
+            width: 500px;
+          }
+          h6 {
+            position: absolute;
+            right: 260px;
+            cursor: pointer;
+            top: 20px;
+            font-size: 20px;
+            color: white;
+          }
+        }
+      }
+    }
   }
+
 }
