@@ -31,6 +31,18 @@ const Our = () => {
                 <div className="our--slider__block">
                     <img className="our--slider__block--images" src={slider4} alt=""/>
                 </div>
+                <div className="our--slider__block">
+                    <img className="our--slider__block--images" src={slider1} alt=""/>
+                </div>
+                <div className="our--slider__block">
+                    <img className="our--slider__block--images" src={slider2} alt=""/>
+                </div>
+                <div className="our--slider__block">
+                    <img className="our--slider__block--images" src={slider3} alt=""/>
+                </div>
+                <div className="our--slider__block">
+                    <img className="our--slider__block--images" src={slider4} alt=""/>
+                </div>
             </div>
         </div>
     );
