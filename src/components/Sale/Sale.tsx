@@ -16,7 +16,7 @@ const Sale = () => {
             />
             <button>Найти</button>
             {/* <div className="sale--inp__block"> */}
-            <a href="#">Расместить свой товар</a>
+            <a href="src/components/Sale/Sale#">Расместить свой товар</a>
             {/* </div> */}
           </div>
           <div className="sale--krug">
