@@ -6,7 +6,7 @@ import Home from "./components/Home/home";
 import Footer from "./components/Footer/footer";
 import AboutUs from "./components/AboutUs/aboutUs";
 import Categories from "./components/Categories/categories";
-import Sale from "./pages.d.ts/Sale/Sale";
+import Sale from "./components/Sale/Sale";
 
 function App() {
   return (

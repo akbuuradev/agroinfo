@@ -1,5 +1,5 @@
 #agro {
-background: url('../../../images/akbuura.png') no-repeat center/cover;
+background: url('../../../images/abouts.png') no-repeat center/cover;
   height: 100vh;
   .agro {
     padding-top: 140px;
@@ -38,20 +38,6 @@ background: url('../../../images/akbuura.png') no-repeat center/cover;
       font-style: normal;
       font-weight: 500;
       line-height: 29px;
-    }
-    &--btn {
-      margin-top: 50px;
-      width: 425px;
-      height: 82px;
-      flex-shrink: 0;
-      background: #50A41C;
-      color: #FFF;
-      font-family: Inter;
-      font-size: 36px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      border: none;
     }
   }
 }
