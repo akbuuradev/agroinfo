@@ -1,63 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "./index.scss";
-import { useEffect } from 'react';
-import 'aos/dist/aos.css'; 
-import AOS from 'aos';
+import { useEffect } from "react";
+import "aos/dist/aos.css";
+import AOS from "aos";
+import biglog from "../../../images/biglogo.png";
 
 const Home = () => {
-    useEffect(() => {
-        AOS.init();
-      }, []);
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 5000,
-    cssEase: "ease-in-out",
-  };
+ 
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <>
-      <div>
-        <div id="home" data-aos="fade-right" data-aos-delay="600">
-          <div className="container">
-            <div className="home">
-              <Slider {...settings}>
-                <div className="home--slide">
-                  <div className="home--slide__text" data-aos="fade-right" data-aos-delay="500">
-                    <h1>Установлен новый мировой рекорд урожайности сои</h1>
-                  </div>
-                </div>
-                <div className="home--slide2">
-                  <div className="home--slide2__text">
-                    <h1>
-                      Агро.КГ - Надёжный партнер и помощник вашего Агро
-                      хозяйства
-                    </h1>
-                  </div>
-                </div>
-                <div className="home--slide">
-                  <div className="home--slide__text">
-                    <h1>Установлен новый мировой рекорд урожайности сои</h1>
-                  </div>
-                </div>
-                <div className="home--slide2">
-                  <div className="home--slide2__text">
-                    <h1>
-                      Агро.КГ - Надёжный партнер и помощник вашего Агро
-                      хозяйства
-                    </h1>
-                  </div>
-                </div>
-              </Slider>
-            </div>
+    <div>
+      <div id="hero" data-aos="fade-right" data-aos-delay="600">
+        <div className="blur">
+        <div className="container">
+          <div className="hero">
+            <center>
+              <div className="hero__info">
+              <img src={biglog} alt=""/>
+              <h1 data-aos="fade-right" className="hero-title">
+                Agro<b>info</b>
+              </h1>
+              </div>
+              <p data-aos="fade-right">АгроИнфо.КГ— информационная поддержка сельского хозяйства и пищевой промышленностю</p>
+            </center>
           </div>
         </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
