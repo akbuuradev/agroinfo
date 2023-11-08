@@ -2,51 +2,67 @@
   .team {
     display: flex;
     justify-content: space-between;
-    padding-top: 100px;
-    &--right {
-      padding-top: 50px;
-      p {
-        width: 539px;
-        color: #000;
+    padding-top: 70px;
+    flex-direction: column;
+
+    &--agro {
+      display: flex;
+      &__line {
+        display: inline-flex;
+        padding: 10px 10px 10px 20px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-left: 5px solid #50A41C;
+      }
+      h2 {
+        color: #228B22;
         font-family: Montserrat;
-        font-size: 42px;
+        font-size: 45px;
         font-style: normal;
         font-weight: 500;
-        line-height: 55px;
-      }
-    }
-    &--left {
-      &__images {
-        position: absolute;
-        right: 690px;
-      }
-      &__image {
-        position: absolute;
-        right: 130px;
-        top: 1200px;
-      }
-      &__img {
-        margin-right: 40px;
-      }
-      &__block {
-        width: 516px;
-        height: 269px;
-        flex-shrink: 0;
-        background: #56B156;
-        position: absolute;
-        top: 1470px;
-        right: 550px;
-        p {
-          margin: 40px 20px;
-          width: 481px;
-          color: #FFF;
+        line-height: normal;
+
+        span {
+          color: #003D2D;
           font-family: Montserrat;
-          font-size: 24px;
+          font-size: 45px;
           font-style: normal;
           font-weight: 500;
           line-height: normal;
         }
       }
+    }
+
+    &--little {
+      h1 {
+        padding: 70px 0 30px 0;
+        color: #228B22;
+        font-family: Montserrat;
+        font-size: 50px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 55px;
+      }
+      p {
+        width: 1280px;
+        color: #63A269;
+        font-family: Montserrat;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+
+    &--lines {
+
+      width: 1280px;
+      height: 4px;
+      flex-shrink: 0;
+      stroke-width: 4px;
+      background: #006400;
+      margin: 80px 0 0 0;
     }
   }
 }
