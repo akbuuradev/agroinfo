@@ -2,38 +2,30 @@
 background: url('../../../images/abouts.png') no-repeat center/cover;
   height: 100vh;
   .agro {
-    padding-top: 140px;
+    padding-top: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
-    &--images {
-      margin-bottom: 20px;
-    }
-    &--image {
-      position: absolute;
-      left: 180px;
-    }
-    &--img {
-
-    }
 
     h1 {
       width: 845px;
       color: #FFF;
       text-align: center;
-      font-family: Playfair Display;
+      font-family: Montserrat;
       font-size: 40px;
+      font-style: normal;
       font-weight: 600;
+      line-height: normal;
       text-transform: uppercase;
     }
     p {
       padding-top: 15px;
-      width: 780px;
+      width: 895px;
       color: #FFF;
       text-align: center;
-      font-family: Poppins;
+      font-family: Montserrat;
       font-size: 20px;
       font-style: normal;
       font-weight: 500;

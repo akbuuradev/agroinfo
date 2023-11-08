@@ -13,9 +13,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    animation: head 2s ease-in-out;
+
 
     &--logo {
-      margin: -20px 0 -10px 0 ;
+      margin: -20px 0 -10px -20px ;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -31,17 +33,48 @@
 
     a {
       color: #FFF;
-      font-family: "Playfair Display";
-      font-size: 19px;
+      font-family: Montserrat;
+      font-size: 24px;
       font-style: normal;
+      letter-spacing: 0.003em;
       font-weight: 500;
       line-height: normal;
       transition: 0.5s;
+      position: relative;
+
+      &:hover:after {
+        border-bottom: 2px solid #FFFFFF;
+        content: '';
+        position: absolute;
+        color: #FFFFFF;
+        opacity: 1;
+        width: 100%;
+        background: #ffffff;
+        bottom: -10px;
+        left: 1%;
+        transition: 6s ease-in-out;
+      }
+
+      &.active:before {
+        width: 100%;
+        content: '';
+        position: absolute;
+        border-bottom: 2px solid #FFFFFF;
+        opacity: 1;
+        color: #FFFFFF;
+        background: #ffffff;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+
+      }
 
       &:hover {
         color: #e3e8ef;
         transform: scale(1.05);
       }
+
+
 
       &:active {
         color: #ffffff;
@@ -76,6 +109,7 @@
       border: none;
       cursor: pointer;
       color: #FFFFFF;
+      margin: 0 -30px 0 0;
     }
 
 
