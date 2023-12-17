@@ -1,0 +1,58 @@
+#personal {
+  .personal {
+    width: 698px;
+    height: 465px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #228b22;
+
+    &--title {
+      h1 {
+        padding-top: 20px;
+        color: #fff;
+        font-family: Inter;
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-align: center;
+      }
+
+      &__email {
+        display: flex;
+        flex-direction: column;
+        margin: 30px 0 0 50px;
+        h4 {
+          color: #c0c0c0;
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+        &--inputs {
+          outline: none;
+          margin: 10px 0 25px 0;
+          width: 348px;
+          height: 55px;
+          flex-shrink: 0;
+          border-radius: 10px;
+          border: 2px solid #fff;
+          color: #fff;
+          background: #228b22;
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          padding-left: 15px;
+
+          &::placeholder{
+            color: #fff;
+          }
+
+        }
+      }
+    }
+  }
+}

@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.scss";
 import Header from "./components/Header/header";
-import { Route, Routes } from "react-router-dom";
-import Home from "./components/Home/home";
+import { Outlet, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/footer";
-import AboutUs from "./components/AboutUs/aboutUs";
-import Categories from "./components/Categories/categories";
-import Sale from "./components/Sale/Sale";
 
+interface IFormData {
+  email: string;
+  password: string;
+  password_confirm: string;
+}
 function App() {
+
+  
+
+  // const [formData, setFormData] = useState<IFormData>(() => {
+  //   const storedPost = localStorage.getItem('formData');
+  //   return storedPost ? JSON.parse(storedPost) : { email: '', password: '', password_confirm: '' };
+  // });
+
+  // // Обновление localStorage при изменении состояния
+  // useEffect(() => {
+  //   localStorage.setItem('formData', JSON.stringify(formData));
+  // }, [formData]);
+  // console.log('ll',formData);
+  
   return (
     <div className="App">
-      <Header />
-      <Routes>
-        <Route path={"/"} element={<Home />} />
-        <Route path={"/о нас"} element={<AboutUs />} />
-        <Route path={"/категории"} element={<Categories />} />
-        <Route path={"/покупка/продажа"} element={<Sale />} />
-      </Routes>
+      <Header/>
+      <Outlet/>
       <Footer />
     </div>
   );

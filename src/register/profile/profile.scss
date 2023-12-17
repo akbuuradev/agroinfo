@@ -1,0 +1,87 @@
+#profile {
+  padding-top: 100px;
+  .profile {
+    display: flex;
+    flex-direction: column;
+    &--right {
+
+      &__tabs {
+        display: flex;
+        justify-content: space-between;
+        &--card {
+
+            .title {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                margin-top: 60px;
+            }
+
+          width: 450.285px;
+          height: 605.62px;
+          flex-shrink: 0;
+          border-radius: 18.492px;
+          background: #228b22;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          &__images {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+          }
+
+          .btn {
+            cursor: pointer;
+            margin: 20px 0;
+            display: inline-flex;
+            padding: 10px 23px;
+            align-items: center;
+            gap: 10px;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            color: #fff;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            background: #228b22;
+          }
+
+          &__too {
+            outline: none;
+            cursor: pointer;
+            margin: 10px 0;
+            display: flex;
+              width: 342px;
+              padding: 10px 23px;
+              align-items: center;
+              gap: 10px;
+              border-radius: 10px;
+              border: 2px solid #fff;
+              background: #228b22;
+            .icons {
+              width: 30px;
+              height: 23.625px;
+              flex-shrink: 0;
+              fill: #fff;
+            }
+
+            span {
+              color: #fff;
+              font-family: Inter;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
+            .btns {
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
