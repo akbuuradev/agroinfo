@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import './yes.scss'
+import { deletePost } from "../../store/reducer/yesSlice";
 // import { deletePost } from "../../store/Reducers/YesSlice";
 
 const Yes = ({ setLogOut, formData, setFormData }: any) => {
@@ -20,7 +21,8 @@ const Yes = ({ setLogOut, formData, setFormData }: any) => {
             <div className="yes--no__btn1">
               <button
                 onClick={(e: any) => {
-                  localStorage.removeItem('post')
+                  // deletePost(e)
+                  localStorage.removeItem('postL')
                   nav("/");
                   window.scroll(0, 0);
                 }}

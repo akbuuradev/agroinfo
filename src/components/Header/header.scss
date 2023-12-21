@@ -38,7 +38,7 @@
       align-items: center;
 
       &__agro {
-        width: 65%;
+        width: 55%;
         margin: 0 0 5px 0;
       }
       &__info {
@@ -495,7 +495,7 @@
 
   .flower {
     position: absolute;
-    top: 30px;
+    top: 50px;
     left: 240px;
   }
 
@@ -504,7 +504,7 @@
     justify-content: space-between;
     align-items: center;
     width: 1055px;
-    height: 680px;
+    height: 630px;
     border-radius: 17px;
     background: #fff;
 
@@ -634,7 +634,7 @@
       }
       .flowers {
         position: absolute;
-        bottom: 30px;
+        bottom: 50px;
         left: 250px;
       }
     }
@@ -646,11 +646,11 @@
         font-size: 20px;
         position: absolute;
         right: 260px;
-        top: 35px;
+        top: 55px;
       }
       &--photo {
         margin: 5px 0 0 0;
-        height: 682px;
+        height: 630px;
         width: 500px;
         border-radius: 0 17px 17px 0;
       }

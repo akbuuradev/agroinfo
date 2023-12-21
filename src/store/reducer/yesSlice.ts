@@ -1,34 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IState } from "../../type/IUser";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { JsxEmit } from "typescript";
-
-const postLocal: any = localStorage.getItem("postL");
 
 interface PostSlice {
-  post: IState;
+  post: IState | null;
 }
 
 const initialState: PostSlice = {
-  post: JSON.parse(postLocal) || {
-    email: '',
-    password: '',
-    password_confirm: '',
-  },
+  post: null,
 };
 
 export const YesSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
-    getPost(state, action: PayloadAction<IState>) {
-      localStorage.setItem("postL", JSON.stringify(state.post = action.payload));
+    setPost(state, action: PayloadAction<IState>) {
+      localStorage.setItem("postL", JSON.stringify(action.payload));
+      state.post = action.payload;
     },
     deletePost(state, action: PayloadAction<IState>) {
-      state.post = action.payload;
+      localStorage.removeItem("postL");
+      state.post = null;
     },
   },
 });
 
 export default YesSlice.reducer;
-export const { getPost, deletePost } = YesSlice.actions;
+export const { setPost, deletePost } = YesSlice.actions;

@@ -14,7 +14,7 @@ const Header = () => {
  
   const [open, setOpen] = useState(true);
   const [close, setClose] = useState(false);
-  const {post}: any = useSelector(state => state)
+  const {post} = useSelector((state: any) => state.YesSlice)
 
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const Header = () => {
             >
               Покупка/Продажа
             </NavLink>
-            {Boolean(post) ? 
+            {Boolean(post) ?
               <div>
                 <NavLink to={"/sub_profile"}>
                   <button className="header--btnse" data-aos="fade-down">

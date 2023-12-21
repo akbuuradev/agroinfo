@@ -1,5 +1,5 @@
 #agro {
-background: url('../../../images/abouts.png') no-repeat center/cover;
+  background: url("./../../../images/abouts.svg") no-repeat center/cover;
   height: 100vh;
   .agro {
     padding-top: 300px;
@@ -8,10 +8,9 @@ background: url('../../../images/abouts.png') no-repeat center/cover;
     justify-content: center;
     flex-direction: column;
 
-
     h1 {
       width: 845px;
-      color: #FFF;
+      color: #fff;
       text-align: center;
       font-family: Montserrat;
       font-size: 40px;
@@ -23,7 +22,7 @@ background: url('../../../images/abouts.png') no-repeat center/cover;
     p {
       padding-top: 15px;
       width: 895px;
-      color: #FFF;
+      color: #fff;
       text-align: center;
       font-family: Montserrat;
       font-size: 20px;
@@ -33,24 +32,3 @@ background: url('../../../images/abouts.png') no-repeat center/cover;
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

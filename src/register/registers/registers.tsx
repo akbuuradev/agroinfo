@@ -7,71 +7,46 @@ import "./registers.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { getPost } from "../../store/reducer/yesSlice";
+import { setPost } from "../../store/reducer/yesSlice";
+import { IState } from "../../type/IUser";
 // import { getPost } from "../../store/Reducers/YesSlice";
 
-const Registers = ({ setOpen, setClose,}: any) => {
+const Registers = ({ setOpen, setClose }: any) => {
   const dispatch = useDispatch();
   const nav = useNavigate();
+  const [login, setLogin] = useState<IState>({
+    email: "",
+    password: "",
+    password_confirm: "",
+  });
 
-  const {post}: any = useSelector((state) => state)
-
-  // const submitRegister = async () => {
-  //   fetch("http://34.30.6.145/account/reg/", {
-  //     method: "POST",
-  //     body: JSON.stringify(post),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => {
-  //       console.log(res);
-  //       return res.json();
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       // change redux
-  //       // dispatch(getPost);
-  //       if (Boolean(post)) {
-  //         nav("/");
-  //       }
-  //     })
-  //     .catch((er: any) => {
-  //       console.log(er);
-  //     });
-  // };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    dispatch(getPost({ ...post, [name]: value }));
+    setLogin({ ...login, [name]: value });
   };
 
- 
-
-  const submitRegister = async () => {
-    try {
-      const response = await axios.post(
-        'http://34.30.6.145/account/reg/',
-        post,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-
-      console.log(response.data);
-      dispatch(getPost(response.data));
-
-      if (Boolean(post)) {
-        nav('/');
-      }
-    } catch (err) {
-      console.error(err);
-    }
+  const submitRegister = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    console.log(login);
+    axios
+      .post("http://34.125.18.221/account/reg/", JSON.stringify(login), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(setPost(login));
+        nav("/");
+      })
+      .catch((er: any) => {
+        console.log(er);
+      });
   };
 
-  
   return (
     <div className="opens">
       <img className="frame1" src={frame1} alt="" />
@@ -118,9 +93,15 @@ const Registers = ({ setOpen, setClose,}: any) => {
               <img src={google} alt="" />
             </div>
 
-            <button onClick={()=>{
-              submitRegister()
-            }} className="opens--group__right--btn3">Отправить</button>
+            <button
+              className="opens--group__right--btn3"
+              onClick={(e) => {
+                submitRegister(e)
+                window.scroll(0,0)
+              }}
+            >
+              Отправить
+            </button>
           </form>
           <img className="frame2" src={frame2} alt="" />
         </div>

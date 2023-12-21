@@ -3,3 +3,8 @@ export interface IState {
     password: string;
     password_confirm: string;
 }
+
+export interface ILogin {
+    email: string;
+    password: string;
+}

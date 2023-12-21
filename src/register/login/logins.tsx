@@ -1,72 +1,49 @@
-import React from "react";
 import { useState } from "react";
 import photo from "./../../images/deatil.png";
 import flower from "./../../images/flower.png";
 import flowers from "./../../images/flowers.png";
+import React, { ChangeEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { on } from "events";
+import { setPost } from "../../store/reducer/yesSlice";
+import { ILogin,  } from "../../type/IUser";
 
 
-interface IState {
-  email: string;
-  password: string;
-}
 
 const Logins = ({ setOpen, setClose }: any) => {
-  const [detail, setDetail] = useState(false);
-  const [word, setWord] = useState(false);
+  const dispatch = useDispatch();
+  const nav = useNavigate();
+  const [login, setLogin] = useState<ILogin>({
+    email: "",
+    password: "",
+  });
 
-// const [login, setLogin] = useState<IState>({
-//     email: "",
-//     password: ""
-// })
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLogin({ ...login, [name]: value });
+  };
 
-function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-  const { value, name } = e.target;
-
-  
-
-  // setLogin({
-  //   ...login,
-  //   [name]: value,
-  // });
-
-}
-
-const submitRegister = async () => {
-  const res = await fetch('http://34.30.6.145/account/reg/', {
-    method: 'POST',
-    body: JSON.stringify({
-      email: 'someemail@gmail.com',
-      password: 'verystrongpass',
-      password_confirm: 'verystrongpass'
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-
-  const data = await res.json()
-
-  if (!res.ok) throw Error(data)
-
-  console.log(data)
-  return data
-}
-
-// function onSubmit() {
-
-
-//   axios
-//     .post("http://34.30.6.145/account/log/", { login })
-//     .then(({ data }) => {
-//       if (data.error) {
-//         console.error(data.error);
-//       } else {
-//         console.log(data);
-//       }
-//     })
-// }
+  const submitLogin = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    console.log(login);
+    axios
+      .post("http://34.125.18.221/account/log/", JSON.stringify(login), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+          nav("/dashboard"); // Redirect to the dashboard after successful login
+      })
+      .catch((er: any) => {
+        console.log(er);
+        // Handle login failure, show error message, etc.
+      });
+  };
 
   return (
     <div>
@@ -87,29 +64,29 @@ const submitRegister = async () => {
                 Войти
               </button>
             </div>
+            <form onSubmit={() => submitLogin}>
             <h1>Email</h1>
             <input
-            onChange={(e) => onChange(e)}
+              onChange={handleInputChange}
               className="detail--open__right--int"
               type="email"
               placeholder="Email"
+              name="email"
             />
             <h1>Пароль</h1>
             <input
-            onChange={(e) => onChange(e)}
+            onChange={handleInputChange}
+          
               className="detail--open__right--int"
               type="password"
               placeholder="Пароль"
             />
             <h3
-              onClick={() => {
-                setWord(true);
-                setDetail(false);
-              }}
             >
               Забыли пароль?
             </h3>
-            <button onClick={submitRegister} className="detail--open__right--btns3">Войти</button>
+            <button className="detail--open__right--btns3">Войти</button>
+            </form>
             <h2>
               Ещё не зарегистрированы? <span>Регистрация</span>
             </h2>
