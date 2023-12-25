@@ -7,9 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { setPost } from "../../store/reducer/yesSlice";
-import { ILogin,  } from "../../type/IUser";
-
-
+import { ILogin } from "../../type/IUser";
+import { setToken } from "../../store/reducer/tokenSlice";
 
 const Logins = ({ setOpen, setClose }: any) => {
   const dispatch = useDispatch();
@@ -24,11 +23,8 @@ const Logins = ({ setOpen, setClose }: any) => {
     setLogin({ ...login, [name]: value });
   };
 
-  const submitLogin = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const submitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(login);
     axios
       .post("http://34.125.18.221/account/log/", JSON.stringify(login), {
         headers: {
@@ -36,12 +32,15 @@ const Logins = ({ setOpen, setClose }: any) => {
         },
       })
       .then((res) => {
-        console.log(res);
-          nav("/dashboard"); // Redirect to the dashboard after successful login
+        console.log(res.data.access);
+
+        dispatch(setToken(res.data?.access));
+        // localStorage.setItem("token", res.data?.access);
+        // nav("/dashboard");
+        setClose(false);
       })
       .catch((er: any) => {
-        console.log(er);
-        // Handle login failure, show error message, etc.
+        // console.log(er);
       });
   };
 
@@ -64,28 +63,25 @@ const Logins = ({ setOpen, setClose }: any) => {
                 Войти
               </button>
             </div>
-            <form onSubmit={() => submitLogin}>
-            <h1>Email</h1>
-            <input
-              onChange={handleInputChange}
-              className="detail--open__right--int"
-              type="email"
-              placeholder="Email"
-              name="email"
-            />
-            <h1>Пароль</h1>
-            <input
-            onChange={handleInputChange}
-          
-              className="detail--open__right--int"
-              type="password"
-              placeholder="Пароль"
-            />
-            <h3
-            >
-              Забыли пароль?
-            </h3>
-            <button className="detail--open__right--btns3">Войти</button>
+            <form onSubmit={(e) => submitLogin(e)}>
+              <h1>Email</h1>
+              <input
+                onChange={handleInputChange}
+                className="detail--open__right--int"
+                type="email"
+                placeholder="Email"
+                name="email"
+              />
+              <h1>Пароль</h1>
+              <input
+                onChange={handleInputChange}
+                className="detail--open__right--int"
+                type="password"
+                name="password"
+                placeholder="Пароль"
+              />
+              <h3>Забыли пароль?</h3>
+              <button className="detail--open__right--btns3">Войти</button>
             </form>
             <h2>
               Ещё не зарегистрированы? <span>Регистрация</span>

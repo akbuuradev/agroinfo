@@ -8,20 +8,18 @@ import "aos/dist/aos.css"; // Импортируйте CSS стили AOS
 import AOS from "aos";
 import Regist from "../../register/regist";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-
+import { AppState } from "../../store/store";
 
 const Header = () => {
- 
   const [open, setOpen] = useState(true);
   const [close, setClose] = useState(false);
-  const {post} = useSelector((state: any) => state.YesSlice)
-
+  // const { post } = useSelector((state: any) => state.YesSlice);
+  const token = useSelector((state: AppState) => state.TokenSlice.token);
 
   useEffect(() => {
     // Инициализация AOS
     AOS.init();
   }, []);
-
 
   return (
     <div>
@@ -55,7 +53,7 @@ const Header = () => {
             >
               Покупка/Продажа
             </NavLink>
-            {Boolean(post) ?
+            {token ? (
               <div>
                 <NavLink to={"/sub_profile"}>
                   <button className="header--btnse" data-aos="fade-down">
@@ -63,7 +61,7 @@ const Header = () => {
                   </button>
                 </NavLink>
               </div>
-             : 
+            ) : (
               <div>
                 <button
                   onClick={() => setClose(true)}
@@ -73,7 +71,7 @@ const Header = () => {
                   Регистрация
                 </button>
               </div>
-            }
+            )}
             <button className="header--button" data-aos="fade-down">
               <AiOutlineGlobal />
             </button>
@@ -81,11 +79,7 @@ const Header = () => {
         </div>
       </div>
       <div style={{ display: close ? "" : "none" }} className="lol">
-        <Regist
-          open={open}
-          setClose={setClose}
-          setOpen={setOpen}
-        />
+        <Regist open={open} setClose={setClose} setOpen={setOpen} />
       </div>
     </div>
   );
