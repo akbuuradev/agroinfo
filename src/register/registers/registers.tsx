@@ -20,7 +20,6 @@ const Registers = ({ setOpen, setClose }: any) => {
     password_confirm: "",
   });
 
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
@@ -96,8 +95,8 @@ const Registers = ({ setOpen, setClose }: any) => {
             <button
               className="opens--group__right--btn3"
               onClick={(e) => {
-                submitRegister(e)
-                window.scroll(0,0)
+                submitRegister(e);
+                window.scroll(0, 0);
               }}
             >
               Отправить

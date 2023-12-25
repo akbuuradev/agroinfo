@@ -10,28 +10,27 @@ import Favorites from "../favorites/favorites";
 import { CiLogout } from "react-icons/ci";
 import Yes from "../yes/yes";
 import { log } from "console";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../store/reducer/tokenSlice";
 
-
-const Profile = ({post, setPost}: any) => {
+const Profile = ({ post, setPost }: any) => {
   const [image, setImage] = useState<any>(() => {
-    const storedImg = localStorage.getItem('image');
+    const storedImg = localStorage.getItem("image");
     return storedImg ? JSON.parse(storedImg) : null;
   });
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    localStorage.setItem('image', JSON.stringify(image))
-  }, [image])
+    localStorage.setItem("image", JSON.stringify(image));
+  }, [image]);
   console.log(image);
-  
-
 
   const [logOut, setLogOut] = useState(false);
   const handleRef = useRef<any>();
 
-  const loginLocal: any = window.localStorage.getItem("loginL")
+  const loginLocal: any = window.localStorage.getItem("loginL");
 
-  const [login, setLogin] = useState(JSON.parse(loginLocal) || {})
-
+  const [login, setLogin] = useState(JSON.parse(loginLocal) || {});
 
   const handleImageChange = (event: any) => {
     const file: any = event.target.files[0];
@@ -40,7 +39,11 @@ const Profile = ({post, setPost}: any) => {
     }
   };
 
-
+  const logOutHandler = () => {
+    setLogOut(true);
+    window.scroll(0, 200);
+    dispatch(setToken(null));
+  };
 
   return (
     <div id="profile">
@@ -62,7 +65,10 @@ const Profile = ({post, setPost}: any) => {
                       onChange={handleImageChange}
                       style={{ display: "none" }}
                     />
-                    <button className="btn" onClick={() => handleRef.current.click()}>
+                    <button
+                      className="btn"
+                      onClick={() => handleRef.current.click()}
+                    >
                       Изменить профиль
                     </button>
                     <Tab className="profile--right__tabs--card__too">
@@ -81,22 +87,26 @@ const Profile = ({post, setPost}: any) => {
                       <RiShoppingBag2Fill className="icons" />
                       <span>Разместить свой товар</span>
                     </Tab>
-                   <button 
-                      onClick={() => {
-                        setLogOut(true)
-                        window.scroll(0,200)
-                      }}
+                    <button
+                      onClick={() => logOutHandler()}
                       className="profile--right__tabs--card__too"
                     >
                       <CiLogout className="icons" />
                       <span>Выйти</span>
                     </button>
-                    {logOut && <Yes setLogOut={setLogOut} login={login} post={post} setPost={setPost}/>}
+                    {logOut && (
+                      <Yes
+                        setLogOut={setLogOut}
+                        login={login}
+                        post={post}
+                        setPost={setPost}
+                      />
+                    )}
                   </div>
                 </TabList>
               </div>
               <TabPanel>
-                <Personal/>
+                <Personal />
               </TabPanel>
               <TabPanel>
                 <Favorites />

@@ -6,6 +6,7 @@ import Footer from "./components/Footer/footer";
 import { IState } from "./type/IUser";
 import { setPost } from "./store/reducer/yesSlice";
 import { useDispatch } from "react-redux";
+import { setToken } from "./store/reducer/tokenSlice";
 
 interface IFormData {
   email: string;
@@ -30,6 +31,14 @@ function App() {
     // localStorage.setItem('formData', JSON.stringify(formData));
   }, []);
   // console.log('ll',formData);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      dispatch(setToken(token));
+    }
+  }, []);
 
   return (
     <div className="App">
