@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import "./Sale.scss";
+import fruit from "../../images/fruitIcon.png";
+import greenIcon from "../../images/icon green.png";
+import zernoIcon from "../../images/zernoicon.png";
 import { useSelector } from "react-redux";
 import { AppState } from "../../store/store";
+import { BsBookmark } from "react-icons/bs";
+import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { IoBagAddOutline } from "react-icons/io5";
 
 interface Product {
   id: number;
@@ -25,6 +32,7 @@ const Sale: React.FC = () => {
     axios(api, config)
       .then((res) => {
         setProducts(res.data);
+        console.log(res.data);
       })
       .catch((er) => {
         console.log(er);
@@ -47,31 +55,73 @@ const Sale: React.FC = () => {
               type="text"
               placeholder="Поиск"
             />
-            <button>Найти</button>
-            <a href="#">Разместить свой товар</a>
+            <button>
+              <FaSearch />
+            </button>
+            <Link to="/createProduct">
+              Разместить свой товар <IoBagAddOutline />
+            </Link>
           </div>
           <div className="sale--krug">
-            <button>Фрукты</button>
-            <button className="one">Зерновые растения</button>
-            <button>Овощи</button>
+            <button>
+              <img src={fruit} alt="" />
+              фрукты
+            </button>
+            <button className="one">
+              <img src={zernoIcon} alt="" />
+              зерновые
+            </button>
+            <button>
+              <img src={greenIcon} alt="" />
+              овощи
+            </button>
+            <button>другое</button>
           </div>
         </div>
-        <div className="sale--blocks">
-          {products.map((product) => (
-            <div key={product.id} className="sale--blocks__big">
-              <img src={product.image} alt={product.title_product} />
-              <div className="sale--blocks__big--mini">
-                <div className="sale--blocks__big--mini__text">
-                  <h2>{product.title_product}</h2>
-                  <h3>{product.price} сом</h3>
+        {token ? (
+          <div className="sale--blocks">
+            {products.map((product) => (
+              <div key={product.id} className="sale--blocks__big">
+                <img src={product.image} alt={product.title_product} />
+                <div className="sale--blocks__big--one">
+                  <h2>
+                    {product.title_product.length > 15
+                      ? product.title_product.slice(0, 12) + "..."
+                      : product.title_product}
+                  </h2>
+                  <BsBookmark className="icon" />
                 </div>
-                <div className="sale--blocks__big--btn">
-                  <button>Посмотреть</button>
+                <div className="sale--blocks__big--mini">
+                  <div className="sale--blocks__big--mini__text">
+                    <h3>
+                      {product.price}
+                      <span>сом</span>
+                    </h3>
+                  </div>
+                  <div className="sale--blocks__big--btn">
+                    <button>Посмотреть</button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <h3
+            style={{
+              textAlign: "center",
+              margin: "100px auto",
+              width: "250px",
+              fontSize: "20px",
+              borderRadius: "15px",
+              padding: "10px 20px",
+              border: "1px solid green",
+              color: "green",
+              fontWeight: "bold",
+            }}
+          >
+            Пройдите регистрацию!
+          </h3>
+        )}
       </div>
     </div>
   );

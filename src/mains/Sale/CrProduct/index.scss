@@ -1,0 +1,47 @@
+#crproduct {
+  padding-top: 100px;
+  .crproduct {
+    select {
+      border-radius: 20px;
+      background: #006400d7;
+      display: flex;
+      padding: 10px 20px;
+      gap: 5px;
+      outline: none;
+      border: none;
+      color: rgb(255, 255, 255);
+      transition: 0.4s;
+      font-weight: 700;
+      option {
+        border-radius: 10px;
+        font-size: 15px;
+        padding: 30px;
+        font-weight: 600;
+      }
+    }
+    &__add {
+      background: #006400d7;
+      padding: 15px 50px;
+      border-radius: 20px;
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      font-family: Monsterrat, sans-serif;
+    }
+    &__inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 50%;
+      .input {
+        margin: 10px 0 0 0;
+        border-radius: 8.899px;
+        border: 2px solid #006400a1;
+        height: 39.156px;
+        outline: none;
+        padding: 0px 10px;
+      }
+    }
+  }
+}
