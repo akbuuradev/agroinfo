@@ -2,10 +2,12 @@ import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import YesSlice from "./reducer/yesSlice";
 import TokenSlice from "./reducer/tokenSlice";
+import product from "./reducer/productSlice";
 
 const rootReducer = combineReducers({
   YesSlice,
   TokenSlice,
+  product,
 });
 
 export const setupStore = () => {

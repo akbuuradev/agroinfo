@@ -28,13 +28,17 @@
       font-weight: 600;
       font-size: 16px;
       font-family: Monsterrat, sans-serif;
+      margin: 20px auto;
     }
     &__inputs {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 50%;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 50px;
+      gap: 50px;
+
       .input {
+        width: 400px;
         margin: 10px 0 0 0;
         border-radius: 8.899px;
         border: 2px solid #006400a1;
