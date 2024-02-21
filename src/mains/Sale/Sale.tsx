@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../store/store";
 import { BsBookmark } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoBagAddOutline } from "react-icons/io5";
 
 interface Product {
@@ -19,8 +19,9 @@ interface Product {
 }
 
 const Sale: React.FC = () => {
-  let api = "http://34.125.18.221/product/";
+  const nav = useNavigate();
   const [products, setProducts] = useState<Product[]>([]);
+  let api = "http://34.125.18.221/product/";
 
   const token = useSelector((state: AppState) => state.TokenSlice.token);
 
@@ -38,6 +39,9 @@ const Sale: React.FC = () => {
         console.log(er);
       });
   };
+  function getDetail(product: Product) {
+    nav(`/detail/${product.id}`);
+  }
 
   useEffect(() => {
     if (token) {
@@ -95,11 +99,13 @@ const Sale: React.FC = () => {
                   <div className="sale--blocks__big--mini__text">
                     <h3>
                       {product.price}
-                      <span>сом</span>
+                      <span>C</span>
                     </h3>
                   </div>
                   <div className="sale--blocks__big--btn">
-                    <button>Посмотреть</button>
+                    <button onClick={() => getDetail(product)}>
+                      Посмотреть
+                    </button>
                   </div>
                 </div>
               </div>

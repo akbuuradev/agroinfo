@@ -85,9 +85,10 @@
     }
     &--blocks {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       flex-wrap: wrap;
       gap: 25px;
+      margin: 0 0 0 8%;
       &__big {
         width: 230px;
         height: 330px;
@@ -168,6 +169,11 @@
             font-family: Inter;
             font-size: 14px;
             font-weight: 500;
+            transition: 0.4s;
+            &:hover {
+              background: #7fff00;
+              color: #fff;
+            }
           }
         }
       }

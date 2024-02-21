@@ -1,24 +1,26 @@
 import axios from "axios";
-import "../CrProduct/index.scss";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../../store/store";
+import "./index.scss";
+import { addProduct } from "../../../store/reducer/productSlice";
 
-interface Product {
+export interface Iproduct {
   title_product: string;
   title_company: string;
   address: string;
   description: string;
   category: string;
+  image: string;
   price: number;
-  number: number;
+  number: string;
   user: string;
+  status: string;
 }
 
 const CrProduct: React.FC = () => {
-  /////
-
-  const [values, setValues] = useState<any>({
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [values, setValues] = useState<Iproduct>({
     title_product: "",
     title_company: "",
     address: "",
@@ -26,59 +28,129 @@ const CrProduct: React.FC = () => {
     category: "",
     price: 0,
     image: "",
-    number: 0,
+    number: "+996",
     user: "",
     status: "",
   });
-
   const token = useSelector((state: AppState) => state.TokenSlice.token);
-
-  const inputValues = (e: any) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+  const dispatch = useDispatch();
+  const inputValues = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
   };
 
-  function addProduct(product: Product) {
-    console.log(product);
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      try {
+        const resizedImage = await resizeImage(file, 800, 600);
+        setSelectedFile(resizedImage);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setValues({ ...values, image: reader.result as string });
+        };
+        reader.readAsDataURL(resizedImage);
+      } catch (error) {
+        console.error("Ошибка при обработке изображения:", error);
+      }
+    }
+  };
 
-    console.log(token);
+  const createProduct = async (product: Iproduct) => {
+    const formData = new FormData();
+    Object.entries(product).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
 
-    axios
-      .post("http://34.125.18.221/product/", product, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err: any) => {
-        console.error(err);
-        if (err.response) {
-          console.error("Response data:", err.response.data);
-          console.error("Response status:", err.response.status);
-          console.error("Response headers:", err.response.headers);
-        } else if (err.request) {
-          console.error("Request failed:", err.request);
-        } else {
-          console.error("Error setting up the request:", err.message);
+    if (selectedFile) {
+      formData.append("image", selectedFile);
+    }
+
+    try {
+      dispatch(addProduct(product));
+      const response = await axios.post(
+        "http://34.125.18.221/product/",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
-  }
+      );
+      console.log(response);
+    } catch (error: any) {
+      console.error("Error:", error);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        console.error("Response status:", error.response.status);
+        console.error("Response headers:", error.response.headers);
+      } else if (error.request) {
+        console.error("Request failed:", error.request);
+      } else {
+        console.error("Error setting up the request:", error.message);
+      }
+    }
+  };
 
-  const getForm = () => {
-    let obj = {
-      title_product: values.title_product,
-      title_company: values.title_company,
-      address: values.address,
-      description: values.description,
-      category: values.category,
-      price: values.price,
-      number: values.number,
-      user: values.user,
-      status: values.status,
-    };
-    addProduct(obj);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    createProduct(values);
+    setValues({
+      title_product: "",
+      title_company: "",
+      address: "",
+      description: "",
+      category: "",
+      price: 0,
+      image: "",
+      number: "+996",
+      user: "",
+      status: "",
+    });
+  };
+
+  const resizeImage = async (
+    file: File,
+    maxWidth: number,
+    maxHeight: number
+  ): Promise<File> => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth) {
+          height *= maxWidth / width;
+          width = maxWidth;
+        }
+        if (height > maxHeight) {
+          width *= maxHeight / height;
+          height = maxHeight;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext("2d");
+        ctx?.drawImage(img, 0, 0, width, height);
+
+        canvas.toBlob((blob) => {
+          if (blob) {
+            resolve(new File([blob], file.name, { type: file.type }));
+          } else {
+            reject(new Error("Ошибка при уменьшении изображения"));
+          }
+        }, file.type);
+      };
+      img.onerror = () => {
+        reject(new Error("Ошибка загрузки изображения"));
+      };
+    });
   };
 
   return (
@@ -89,87 +161,112 @@ const CrProduct: React.FC = () => {
         </center>
         {token ? (
           <div className="crproduct">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                getForm();
-              }}
-            >
-              <select name="status" onChange={inputValues}>
-                <option value="">Выберите категорию</option>
-                <option value="Фермер">Фермер</option>
-                <option value="Магазин">Магазин</option>
-              </select>
+            <form onSubmit={handleSubmit}>
               <div className="crproduct__inputs">
-                <input
-                  type="text"
-                  className="input"
-                  placeholder="Название товара"
-                  name="title_product"
-                  onChange={inputValues}
-                />
-                <input
-                  type="text"
-                  className="input"
-                  placeholder="Название компании"
-                  name="title_company"
-                  onChange={inputValues}
-                />
-                <input
-                  type="text"
-                  className="input"
-                  placeholder="Место положение"
-                  name="address"
-                  onChange={inputValues}
-                />
-                <img
-                  className="profile--right__tabs--card__images"
-                  src={""}
-                  alt=""
-                  style={{ width: "25%" }}
-                />
-
-                <input
-                  type="text"
-                  className="input"
-                  placeholder="Описание товара"
-                  name="description"
-                  onChange={inputValues}
-                />
-                <select name="category" onChange={inputValues}>
-                  <option value="">Выберите тип продукта</option>
-                  <option value="Фрукты">Фрукты</option>
-                  <option value="Овощи">Овощи</option>
-                  <option value="Зернобобовые растения">
-                    Зернобобовые растения
-                  </option>
-                  <option value="Другое">Другое</option>
-                </select>
-                <input
-                  type="text"
-                  className="input"
-                  name="price"
-                  placeholder="Цена"
-                  onChange={inputValues}
-                />
-                <input
-                  type="text"
-                  className="input"
-                  name="number"
-                  placeholder="Номер телефона"
-                  onChange={inputValues}
-                />
-                <input
-                  type="text"
-                  className="input"
-                  name="user"
-                  placeholder="E-mail"
-                  onChange={inputValues}
-                />
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <select name="status" onChange={inputValues}>
+                    <option value="">Выберите категорию</option>
+                    <option value="Фермер">Фермер</option>
+                    <option value="Магазин">Магазин</option>
+                  </select>
+                  <input
+                    value={values.title_product}
+                    required
+                    type="text"
+                    className="input"
+                    placeholder="Название товара"
+                    name="title_product"
+                    onChange={inputValues}
+                  />
+                  <input
+                    value={values.title_company}
+                    type="text"
+                    className="input"
+                    placeholder="Название компании"
+                    name="title_company"
+                    onChange={inputValues}
+                  />
+                  <input
+                    value={values.address}
+                    required
+                    type="text"
+                    className="input"
+                    placeholder="Место положение"
+                    name="address"
+                    onChange={inputValues}
+                  />
+                  <input
+                    value={values.description}
+                    type="text"
+                    required
+                    className="input"
+                    placeholder="Описание товара"
+                    name="description"
+                    onChange={inputValues}
+                  />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <select
+                    name="category"
+                    required
+                    value={values.category}
+                    onChange={inputValues}
+                  >
+                    <option value="">Выберите тип продукта</option>
+                    <option value="Фрукты">Фрукты</option>
+                    <option value="Овощи">Овощи</option>
+                    <option value="Зернобобовые растения">
+                      Зерновые растения
+                    </option>
+                    <option value="Другое">Другое</option>
+                  </select>
+                  <input
+                    value={values.price}
+                    required
+                    type="text"
+                    className="input"
+                    name="price"
+                    placeholder="Цена"
+                    onChange={inputValues}
+                  />
+                  <input
+                    value={values.number}
+                    required
+                    type="text"
+                    className="input"
+                    name="number"
+                    placeholder="Номер телефона"
+                    onChange={inputValues}
+                  />
+                  <input
+                    value={values.user}
+                    required
+                    type="text"
+                    className="input"
+                    name="user"
+                    placeholder="E-mail"
+                    onChange={inputValues}
+                  />
+                  <img
+                    className="profile--right__tabs--card__images"
+                    src={values.image}
+                    alt=""
+                    style={{ width: "25%" }}
+                  />
+                  <input
+                    required
+                    type="file"
+                    name="image"
+                    placeholder="photo"
+                    onChange={handleFileChange}
+                  />
+                </div>
               </div>
-              <button type="submit" className="crproduct__add">
-                Отправить
-              </button>
+              <center>
+                <button type="submit" className="crproduct__add">
+                  Отправить
+                </button>
+              </center>
             </form>
           </div>
         ) : (
