@@ -33,10 +33,9 @@ const Logins = ({ setOpen, setClose }: any) => {
       })
       .then((res) => {
         console.log(res.data.access);
-
         dispatch(setToken(res.data?.access));
-        // localStorage.setItem("token", res.data?.access);
-        // nav("/dashboard");
+        localStorage.setItem("token", res.data?.access);
+        nav("/");
         setClose(false);
       })
       .catch((er: any) => {
@@ -80,7 +79,7 @@ const Logins = ({ setOpen, setClose }: any) => {
                 name="password"
                 placeholder="Пароль"
               />
-              <h3>Забыли пароль?</h3>
+              <h3 onClick={() => setClose(undefined)}>Забыли пароль?</h3>
               <button className="detail--open__right--btns3">Войти</button>
             </form>
             <h2>

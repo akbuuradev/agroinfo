@@ -7,6 +7,7 @@ import { IState } from "./type/IUser";
 import { setPost } from "./store/reducer/yesSlice";
 import { useDispatch } from "react-redux";
 import { setToken } from "./store/reducer/tokenSlice";
+const user = localStorage.getItem("users")
 
 interface IFormData {
   email: string;
@@ -38,7 +39,7 @@ function App() {
     if (token) {
       dispatch(setToken(token));
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="App">

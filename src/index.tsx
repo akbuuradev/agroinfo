@@ -14,6 +14,7 @@ import Favorites from "./register/favorites/favorites";
 import { Provider } from "react-redux";
 import { setupStore } from "./store/store";
 import CrProduct from "./mains/Sale/CrProduct";
+import Login from "./register/logins/login";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -36,6 +37,7 @@ root.render(
           </Route>
         </Route>
         <Route path={"/wrap_registers"} element={<Registers />} />
+        <Route path={"/login"} element={<Login/>}/>
       </Routes>
     </Provider>
   </BrowserRouter>

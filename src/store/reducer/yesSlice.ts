@@ -4,10 +4,13 @@ import { PayloadAction } from "@reduxjs/toolkit";
 
 interface PostSlice {
   post: IState | null;
+  userserver: any[]
+
 }
 
 const initialState: PostSlice = {
   post: null,
+  userserver: [],
 };
 
 export const YesSlice = createSlice({

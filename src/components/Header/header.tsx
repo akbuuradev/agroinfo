@@ -9,17 +9,21 @@ import AOS from "aos";
 import Regist from "../../register/regist";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { AppState } from "../../store/store";
+import Login from "../../register/logins/login";
+import Words from "../../register/words/words";
 
 const Header = () => {
   const [open, setOpen] = useState(true);
   const [close, setClose] = useState(false);
   // const { post } = useSelector((state: any) => state.YesSlice);
   const token = useSelector((state: AppState) => state.TokenSlice.token);
+  const user = localStorage.getItem("users");
+  console.log("user", user ? "true" : "false");
 
   useEffect(() => {
     // Инициализация AOS
     AOS.init();
-  }, []);
+  }, [user]);
 
   return (
     <div>
@@ -64,7 +68,10 @@ const Header = () => {
             ) : (
               <div>
                 <button
-                  onClick={() => setClose(true)}
+                  onClick={() => {
+                    window.scroll(0, 0);
+                    setClose(true);
+                  }}
                   className="header--btns"
                   data-aos="fade-down"
                 >
@@ -80,6 +87,18 @@ const Header = () => {
       </div>
       <div style={{ display: close ? "" : "none" }} className="lol">
         <Regist open={open} setClose={setClose} setOpen={setOpen} />
+      </div>
+      <div
+        style={{ display: close === null ? "block" : "none" }}
+        className="lol"
+      >
+        <Login setCloce={setClose} />
+      </div>
+      <div
+        className="lol"
+        style={{ display: close === undefined ? "block" : "none" }}
+      >
+        <Words />
       </div>
     </div>
   );

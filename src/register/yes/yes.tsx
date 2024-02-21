@@ -3,11 +3,21 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import './yes.scss'
 import { deletePost } from "../../store/reducer/yesSlice";
+import { setToken } from "../../store/reducer/tokenSlice";
 // import { deletePost } from "../../store/Reducers/YesSlice";
-
+const clearLocal = null
 const Yes = ({ setLogOut, formData, setFormData }: any) => {
   const nav = useNavigate();
   const dispatch = useDispatch();
+
+  const logOutHandler = () => {
+    setLogOut(true);
+    window.scroll(0, 0);
+    dispatch(setToken(null));
+    // localStorage.removeItem("users")
+    nav("/")
+    
+  };
 
   return (
     <div id="yes">
@@ -20,12 +30,7 @@ const Yes = ({ setLogOut, formData, setFormData }: any) => {
             </h4>
             <div className="yes--no__btn1">
               <button
-                onClick={(e: any) => {
-                  // deletePost(e)
-                  localStorage.removeItem('postL')
-                  nav("/");
-                  window.scroll(0, 0);
-                }}
+               onClick={() => logOutHandler()}
                 style={{ margin: "0 10px 0 25px" }}
               >
                 <a className="well" href="">Да</a>

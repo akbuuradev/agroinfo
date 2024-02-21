@@ -42,7 +42,7 @@ const Profile = ({ post, setPost }: any) => {
   const logOutHandler = () => {
     setLogOut(true);
     window.scroll(0, 200);
-    dispatch(setToken(null));
+    // dispatch(setToken(null));
   };
 
   return (
