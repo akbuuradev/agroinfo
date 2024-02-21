@@ -13,20 +13,20 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
-        border-left: 5px solid #50A41C;
+        border-left: 5px solid #50a41c;
       }
       h2 {
-        color: #228B22;
+        color: #228b22;
         font-family: Montserrat;
-        font-size: 40px;
+        font-size: 35px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
 
         span {
-          color: #003D2D;
+          color: #003d2d;
           font-family: Montserrat;
-          font-size: 40px;
+          font-size: 35px;
           font-style: normal;
           font-weight: 500;
           line-height: normal;
@@ -37,18 +37,18 @@
     &--little {
       h1 {
         padding: 70px 0 30px 0;
-        color: #228B22;
+        color: #228b22;
         font-family: Montserrat;
-        font-size: 40px;
+        font-size: 35px;
         font-style: normal;
         font-weight: 600;
         line-height: 55px;
       }
       p {
         width: 1280px;
-        color: #63A269;
+        color: #63a269;
         font-family: Montserrat;
-        font-size: 26px;
+        font-size: 22px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -56,7 +56,6 @@
     }
 
     &--lines {
-
       width: 1280px;
       height: 4px;
       flex-shrink: 0;

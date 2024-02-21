@@ -6,18 +6,17 @@
     flex-direction: column;
     padding-top: 55px;
 
-
     h1 {
       text-align: start;
-      color: #228B22;
+      color: #228b22;
       font-family: Montserrat;
-      font-size: 40px;
+      font-size: 35px;
       font-style: normal;
       font-weight: 600;
       line-height: normal;
     }
     &--slider {
-      padding-top: 40px;
+      padding-top: 35px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -29,7 +28,6 @@
 
       margin: 0 -11% 0 0;
       &__block {
-
         &--images {
           width: 414px;
           height: 348px;

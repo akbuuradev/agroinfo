@@ -2,6 +2,7 @@
 import Registers from "./registers/registers";
 import Logins from "./login/logins";
 import {useState} from "react"
+import Login from "./logins/login";
 
 
 const regist = ({open, setOpen, setClose, post, setPost, setSend, send }: any) => {
@@ -19,6 +20,7 @@ const regist = ({open, setOpen, setClose, post, setPost, setSend, send }: any) =
       ) : (
         <Logins setOpen={setOpen} setClose={setClose} />
       )}
+    
     </div>
   );
 };

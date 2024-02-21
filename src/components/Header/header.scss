@@ -25,7 +25,7 @@
       background: #fff;
       color: #000;
       font-family: Montserrat;
-      font-size: 20px;
+      font-size: 18px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -38,18 +38,18 @@
       align-items: center;
 
       &__agro {
-        width: 55%;
+        width: 45%;
         margin: 0 0 5px 0;
       }
       &__info {
-        width: 65%;
+        width: 60%;
       }
     }
 
     a {
       color: #fff;
       font-family: Montserrat;
-      font-size: 24px;
+      font-size: 20px;
       font-style: normal;
       letter-spacing: 0.003em;
       font-weight: 500;
@@ -122,130 +122,6 @@
       cursor: pointer;
       color: #ffffff;
       margin: 0 -30px 0 0;
-    }
-
-    .words {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      z-index: 140;
-      min-width: 100vw;
-      min-height: 100vh;
-      background: #363535;
-      background: rgba(51, 50, 50, 0.8);
-
-      &--post {
-        width: 530px;
-        height: 324px;
-        border-radius: 20px;
-        background: #fff;
-
-        &__forgot {
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-
-          h1 {
-            padding: 35px 0;
-            color: #000;
-            font-family: Playfair Display;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-          }
-          p {
-            width: 403px;
-            color: #5b5858;
-            text-align: center;
-            font-family: Inter;
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-          }
-
-          &--icon {
-            display: flex;
-            align-items: center;
-            padding: 30px 0;
-
-            &__icons {
-              color: #7a7a7a;
-              font-size: 45px;
-            }
-
-            &__inputs {
-              margin: 0 0 0 20px;
-              display: flex;
-              width: 308px;
-              padding: 16px 22px;
-              align-items: flex-start;
-              gap: 10px;
-              border-radius: 20px;
-              background: #dcfded;
-              color: #7a7a7a;
-              font-family: Inter;
-              border: none;
-              font-size: 12px;
-              font-style: normal;
-              font-weight: 400;
-              line-height: normal;
-            }
-          }
-
-          &--back {
-            display: flex;
-            &__send1 {
-              cursor: pointer;
-              margin: 0 0 0 60px;
-              display: flex;
-              width: 118px;
-              height: 34px;
-              padding: 9px 10px;
-              justify-content: center;
-              align-items: center;
-              gap: 10px;
-              flex-shrink: 0;
-              border-radius: 7px;
-              border: 1px solid #7fff00;
-              color: #7fff00;
-              font-family: Inter;
-              font-size: 15.552px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: normal;
-            }
-
-            &__send2 {
-              cursor: pointer;
-              margin: 0 0 0 040px;
-              display: flex;
-              width: 126px;
-              height: 34px;
-              padding: 9.52px 14.96px;
-              justify-content: center;
-              align-items: center;
-              gap: 5.63px;
-              flex-shrink: 0;
-              border-radius: 5.63px;
-              background: #96f23b;
-              color: var(--White, #fff);
-              font-family: Inter;
-              font-size: 15.552px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: normal;
-              border: none;
-            }
-          }
-        }
-      }
     }
 
     .send {
@@ -325,6 +201,182 @@
   position: absolute;
   z-index: 1;
 }
+.lol {
+  #words {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 140;
+    min-width: 143vw;
+    min-height: 100vh;
+    background: #363535;
+    background: rgba(51, 50, 50, 0.8);
+
+    .words {
+      width: 530px;
+      height: 324px;
+      border-radius: 20px;
+      background: #fff;
+
+      &--forgot {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        h1 {
+          padding: 35px 0 20px 0;
+          color: #000;
+          font-family: Playfair Display;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+        }
+        p {
+          width: 403px;
+          color: #5b5858;
+          text-align: center;
+          font-family: Inter;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+
+        &__messag {
+          display: flex;
+          align-items: center;
+          padding: 30px 0;
+
+          &--icons {
+            color: #7a7a7a;
+            font-size: 45px;
+          }
+
+          &--inputs {
+            outline: none;
+            margin: 0 0 0 20px;
+            display: flex;
+            width: 308px;
+            padding: 16px 22px;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 20px;
+            background: #dcfded;
+            color: #7a7a7a;
+            font-family: Inter;
+            border: none;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+        }
+
+        &__back {
+          display: flex;
+          &--send1 {
+            cursor: pointer;
+            margin: 0 0 0 60px;
+            display: flex;
+            width: 118px;
+            height: 34px;
+            padding: 9px 10px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            border-radius: 7px;
+            border: 1px solid #7fff00;
+            color: #7fff00;
+            font-family: Inter;
+            font-size: 15.552px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+          }
+
+          &--send2 {
+            cursor: pointer;
+            margin: 0 0 0 040px;
+            display: flex;
+            width: 126px;
+            height: 34px;
+            padding: 9.52px 14.96px;
+            justify-content: center;
+            align-items: center;
+            gap: 5.63px;
+            flex-shrink: 0;
+            border-radius: 5.63px;
+            background: #96f23b;
+            color: var(--White, #fff);
+            font-family: Inter;
+            font-size: 15.552px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+.opens--group__right--inputs {
+  position: relative;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-0.5px);
+  }
+  20%,
+  80% {
+    transform: translateX(1px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-2px);
+  }
+  40%,
+  60% {
+    transform: translateX(2px);
+  }
+}
+.placehol {
+  &::placeholder {
+    color: red;
+  }
+}
+.shake {
+  animation: shake 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
+  // margin: 0 0 0 20px;
+  outline: none;
+  display: flex;
+  width: 308px;
+  padding: 16px 22px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 20px;
+  background: #dcfded;
+  color: #7a7a7a;
+  font-family: Inter;
+  border: none;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  &::placeholder {
+    color: red;
+  }
+}
 
 .opens {
   display: flex;
@@ -366,6 +418,13 @@
       display: flex;
       flex-direction: column;
       margin: 0 40px;
+
+      &--errors {
+        display: block;
+        margin: 3px;
+        visibility: hidden;
+        color: red;
+      }
 
       &--btn {
         display: flex;
