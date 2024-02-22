@@ -13,7 +13,7 @@ import { setToken } from "../../store/reducer/tokenSlice";
 import "./login.scss";
 import { log } from "console";
 
-const Login = ({setCloce}: any) => {
+const Login = ({ setCloce }: any) => {
   const dispatch = useDispatch();
   const nav = useNavigate();
   const [login, setLogin] = useState<ILogin>({
@@ -60,10 +60,11 @@ const Login = ({setCloce}: any) => {
                   <span>Verifi account</span>
                 </p>
               </div>
-              <form onSubmit={(e) => {
-                submitLogin(e)
-              }
-              }>
+              <form
+                onSubmit={(e) => {
+                  submitLogin(e);
+                }}
+              >
                 <h1>Email</h1>
                 <input
                   onChange={handleInputChange}
@@ -80,7 +81,7 @@ const Login = ({setCloce}: any) => {
                   name="password"
                   placeholder="Пароль"
                 />
-                <button onClick={() => setCloce(false)} className="logins--open__right--btns3">
+                <button className="logins--open__right--btns3">
                   Отправить
                 </button>
               </form>
