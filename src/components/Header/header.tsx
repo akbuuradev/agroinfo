@@ -86,7 +86,7 @@ const Header = () => {
         </div>
       </div>
       <div style={{ display: close ? "" : "none" }} className="lol">
-        <Regist open={open} setClose={setClose} setOpen={setOpen} />
+тз        <Regist open={open} setClose={setClose} setOpen={setOpen} />
       </div>
       <div
         style={{ display: close === null ? "block" : "none" }}

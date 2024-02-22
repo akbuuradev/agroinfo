@@ -3,7 +3,7 @@ import photo from "./../../images/deatil.png";
 import google from "./../../images/google.png";
 import frame1 from "./../../images/Frame1.png";
 import frame2 from "./../../images/Frame2.png";
-import "./registers.scss";  
+import "./registers.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -46,7 +46,6 @@ const Registers = ({ setOpen, setClose }: any) => {
     setValue3(e.target.value);
     setError2(0);
   }
- 
 
   const submitRegister = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -117,6 +116,7 @@ const Registers = ({ setOpen, setClose }: any) => {
               name="email"
               type="email"
               placeholder="Email"
+              autoComplete="email"
             />
             <small
               style={{
@@ -141,6 +141,7 @@ const Registers = ({ setOpen, setClose }: any) => {
               type="password"
               name="password"
               placeholder="Пароль"
+              autoComplete="current-password"
             />
             <small
               style={{
@@ -164,6 +165,7 @@ const Registers = ({ setOpen, setClose }: any) => {
               type="password"
               name="password_confirm"
               placeholder="Пароль"
+              autoComplete="current-password"
             />
             <small
               style={{
